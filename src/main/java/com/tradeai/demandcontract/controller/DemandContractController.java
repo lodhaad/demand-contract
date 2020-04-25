@@ -1,12 +1,23 @@
 package com.tradeai.demandcontract.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.tradeai.demandcontract.dto.DemandContractDTO;
+import com.tradeai.demandcontract.input.ClientContractRequest;
+import com.tradeai.demandcontract.output.ClientContractOutput;
 import com.tradeai.demandcontract.service.DemandContractService;
 
-@Controller
+@RestController
+@RequestMapping("/demand/contract")
 public class DemandContractController {
 	
 	@Autowired 
@@ -14,34 +25,26 @@ public class DemandContractController {
 	
 	
 	
-	public void heath() {
+	public void health() {
 		
 	}
 	
-	public String getContract() {
-		return "get Contract "; 
+	@GetMapping(path = "/{contractId}")
+	public ResponseEntity<ClientContractOutput> getContract(@PathVariable String contractId) {
+		DemandContractDTO contractDTO = service.getContractByContractId(Integer.parseInt(contractId));
+		ClientContractOutput clientContractOutput = new ClientContractOutput();
+		clientContractOutput.setDemandContract(contractDTO);
+		return new ResponseEntity<ClientContractOutput>(clientContractOutput, HttpStatus.OK);
 		
 	}
 	
-	
-	public String postNewContract() throws Exception { 
-		
-		DemandContractDTO dto = new DemandContractDTO();
-		
-		service.processContractActivity(dto);
-		
-		return "post";
+	@PostMapping(path = "/addContract", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<ClientContractOutput>  addContract(@RequestBody ClientContractRequest contractRequest) throws Exception { 
+		DemandContractDTO contractDTO  = service.processContractActivity(contractRequest,"N", "P");
+		ClientContractOutput clientContractOutput = new ClientContractOutput();
+		clientContractOutput.setDemandContract(contractDTO);
+		return new ResponseEntity<ClientContractOutput>(clientContractOutput, HttpStatus.OK);
 		
 	}
 	
-	public String updateContract() throws Exception {
-		
-		DemandContractDTO dto = new DemandContractDTO();
-		
-		service.processContractActivity(dto);
-		
-		return "post";
-		
-	}
-
 }

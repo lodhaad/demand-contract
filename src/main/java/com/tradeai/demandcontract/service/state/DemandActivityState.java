@@ -1,4 +1,4 @@
-package com.tradeai.demandcontract.state;
+package com.tradeai.demandcontract.service.state;
 
 import com.tradeai.demandcontract.dto.DemandContractDTO;
 

@@ -7,58 +7,54 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
-@Table (name = "supply_contract", schema = "supply")
-
-
+@Table(name = "demand_contract", schema = "demand")
+@Data
 public class DemandContract {
-	
-	@Id
-	@Column (name = "supply_contract_id")
-	private Integer demandContractId;
-	
-	
-	@Column (name = "supplier_id")
-	private String clientId;
-	
-	@Column (name = "supply_sec_code")
-	private String securityCode;
-	
-	@Column (name = "supply_orig_qty")
-	private Integer originalQuantity;
-	
-	@Column (name = "acct_id")
-	private String accountId;
-	
-	@Column (name = "supply_current_qty")
-	private Integer currentQuantity;
-	
-	@Column (name = "supply_orig_rate")
-	private Double originalRate;
-	
-	@Column (name = "supply_current_rate")
-	private Double currentRate;
-	
-	@Column (name = "supply_orig_price")
-	private Double originalPrice;
-	
-	@Column (name = "supply_current_price")
-	private Double currentPrice;
-	@Column (name = "supply_current_price")
-	private Double origValue;
-	
-	@Column (name = "supply_current_price")
-	private Double currentValue;
-	
-	@Column (name = "supply_contract_date")
-	private Date contractBookingDate;
-	
 
-	@Column (name = "contract_status")
+	@Id
+	@Column(name = "demand_contract_id")
+	private Integer demandContractId;
+
+	@Column(name = "client_id")
+	private String clientId;
+
+	@Column(name = "acct_id")
+	private String accountId;
+
+	@Column(name = "sec_code")
+	private String securityCode;
+
+	@Column(name = "demand_orig_qty")
+	private Integer originalQuantity;
+
+	@Column(name = "demand_current_qty")
+	private Integer currentQuantity;
+
+	@Column(name = "demand_orig_rate")
+	private Double originalRate;
+
+	@Column(name = "demand_current_rate")
+	private Double currentRate;
+
+	@Column(name = "demand_orig_price")
+	private Double originalPrice;
+
+	@Column(name = "demand_current_price")
+	private Double currentPrice;
+	
+	@Column(name = "demand_orig_value")
+	private Double origValue;
+
+	@Column(name = "demand_current_value")
+	private Double currentValue;
+
+	@Column(name = "demand_contract_date")
+	private Date contractBookingDate;
+
+	@Column(name = "contract_status")
 	private String contractStatus;
-	
-	@Column (name = "activity_type")
-	private String activityType;
-	
 
 }

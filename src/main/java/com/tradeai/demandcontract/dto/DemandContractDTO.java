@@ -3,11 +3,6 @@ package com.tradeai.demandcontract.dto;
 import java.sql.Date;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-
-import com.tradeai.demandcontract.datamodel.DemandActivity;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -44,9 +39,7 @@ public class DemandContractDTO {
 
 	private String contractStatus;
 
-	private String contractActivity;
-	
-	private List<DemandActivity> allActivities; 
+	private List<DemandContractActivityDTO> activities; 
 	
 
 }

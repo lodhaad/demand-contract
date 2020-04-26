@@ -17,7 +17,7 @@ import com.tradeai.demandcontract.output.ClientContractOutput;
 import com.tradeai.demandcontract.service.DemandContractService;
 
 @RestController
-@RequestMapping("/demand/contract")
+@RequestMapping("/demand-contract")
 public class DemandContractController {
 	
 	@Autowired 
@@ -38,7 +38,8 @@ public class DemandContractController {
 		
 	}
 	
-	@PostMapping(path = "/addContract", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping
+
 	public ResponseEntity<ClientContractOutput>  addContract(@RequestBody ClientContractRequest contractRequest) throws Exception { 
 		DemandContractDTO contractDTO  = service.processContractActivity(contractRequest,"N", "P");
 		ClientContractOutput clientContractOutput = new ClientContractOutput();

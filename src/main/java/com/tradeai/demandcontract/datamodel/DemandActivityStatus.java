@@ -13,20 +13,20 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "demand_contract_activity_state", schema = "demand")
+@Table(name = "demand_contract_activity_state", schema = "demand_contract")
 @IdClass(StatusCompositeKey.class)
 
 public class DemandActivityStatus {
 	@Id
-	@Column (name = "contract_activity_state_id")
+	@Column (name = "demand_contract_activity_state_id")
 	private Integer contractActivityStatusId;
 
 	@Id
-	@Column (name = "contract_id")
+	@Column (name = "demand_contract_id")
 	private Integer contractId;
 
 	@Id
-	@Column (name = "contract_activity_id")
+	@Column (name = "demand_contract_activity_id")
 	private Integer contractActivityId;
 
 	@Column (name = "demand_contract_activity_type")

@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "demand_contract", schema = "demand")
+@Table(name = "demand_contract", schema = "demand_contract")
 @Data
 public class DemandContract {
 
@@ -56,5 +56,8 @@ public class DemandContract {
 
 	@Column(name = "contract_status")
 	private String contractStatus;
+	
+	@Column(name = "latest_activity_type")
+	private String latestActivity;
 
 }

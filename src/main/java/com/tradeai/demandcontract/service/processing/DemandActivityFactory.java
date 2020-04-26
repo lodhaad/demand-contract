@@ -13,7 +13,7 @@ public class DemandActivityFactory {
 		if (activityType.equals("N")) {
 			return newContractActivityProcess;
 		} else {
-			throw new Exception(" this contract is not supported");
+			throw new Exception(" this contract activity is not supported");
 		}
 	}
 

@@ -13,7 +13,7 @@ import javax.persistence.Id;
 
 @Data
 @Entity
-@Table (name = "demand_contract_activity", schema = "demand")
+@Table (name = "demand_contract_activity", schema = "demand_contract")
 @IdClass(ActivityCompositeKey.class)
 public class DemandActivity {
 

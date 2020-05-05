@@ -22,6 +22,7 @@ import com.tradeai.demandcontract.service.processing.DemandActivityFactory;
 import com.tradeai.demandcontract.service.processing.DemandActivityProcess;
 
 @Service
+
 public class DemandContractServiceImpl implements DemandContractService {
 	
 	@Autowired
@@ -41,7 +42,15 @@ public class DemandContractServiceImpl implements DemandContractService {
 	@Override
 	public DemandContractDTO processContractActivity(ClientContractRequest contractRequest, String activityType, String activityStatus) throws Exception{
 		DemandActivityProcess activityProcess =  factory.getActivityType(activityType);
-		DemandContractDTO demandContractDTO = mapNewContractRequest(contractRequest);
+		
+		DemandContractDTO demandContractDTO ;
+		
+		if("S".equals(activityStatus)) {
+			demandContractDTO = getContractByContractId(contractRequest.getContractId());
+		} else {
+			demandContractDTO = mapNewContractRequest(contractRequest);
+		}
+		
 		DemandContractDTO returnedcontractDTO = activityProcess.processActivity(demandContractDTO, activityStatus);
 		return returnedcontractDTO;
 	}
@@ -110,6 +119,8 @@ public class DemandContractServiceImpl implements DemandContractService {
 		contractDTO.setCurrentRate(contractModel.getCurrentRate());
 		contractDTO.setContractStatus(contractModel.getContractStatus());
 		contractDTO.setActivities(dtos);
+		contractDTO.setClientId(contractModel.getClientId());
+		contractDTO.setContractBookingDate(contractModel.getContractBookingDate());
 
 		return contractDTO;
 

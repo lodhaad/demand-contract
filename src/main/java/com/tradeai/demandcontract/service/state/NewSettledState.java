@@ -36,9 +36,9 @@ public class NewSettledState implements DemandActivityState {
 		ModelMapper mapper = new ModelMapper();
 
 		DemandContract contractDomain = mapper.map(contract, DemandContract.class);
+		contractDomain.setContractStatus("S");
 
-		DemandActivity activity = activityRepo
-				.findByDemandContractIdAndActivityTypeAndActivityState(contractDomain.getDemandContractId(), "N", "P");
+		DemandActivity activity = activityRepo.findByDemandContractIdAndActivityTypeAndActivityState(contractDomain.getDemandContractId(), "N", "P");
 
 		activity.setActivityState("S");
 

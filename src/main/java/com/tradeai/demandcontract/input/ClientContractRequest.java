@@ -13,4 +13,7 @@ public class ClientContractRequest {
 	private Integer askedQuantity;
 	private Double askedRate;
 	private Double askedPrice;
+	
+	// for settling of contract , only pass this.
+	private Integer contractId;
 }

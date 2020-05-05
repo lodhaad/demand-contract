@@ -41,9 +41,12 @@ public class DemandContractController {
 	@PostMapping
 
 	public ResponseEntity<ClientContractOutput>  addContract(@RequestBody ClientContractRequest contractRequest) throws Exception { 
+		
 		DemandContractDTO contractDTO  = service.processContractActivity(contractRequest,"N", "P");
+		
 		ClientContractOutput clientContractOutput = new ClientContractOutput();
 		clientContractOutput.setDemandContract(contractDTO);
+		
 		return new ResponseEntity<ClientContractOutput>(clientContractOutput, HttpStatus.OK);
 		
 	}

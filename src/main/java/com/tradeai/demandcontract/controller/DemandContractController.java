@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,14 +39,17 @@ public class DemandContractController {
 	
 	@GetMapping(path = "/{contractId}")
 	public ResponseEntity<DemandContractResponse> getContract(@PathVariable String contractId) {
+		
 		DemandContractDTO contractDTO = service.getContractByContractId(Integer.parseInt(contractId));
+		
 		DemandContractResponse clientContractOutput = mapContractDTOToResponse(contractDTO);
+		
 		return new ResponseEntity<DemandContractResponse>(clientContractOutput, HttpStatus.OK);
 		
 	}
 	
 
-	@PostMapping(path = "/addContract", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping
 	public ResponseEntity<DemandContractResponse>  addContract(@RequestBody ClientContractRequest contractRequest) throws Exception { 
 		
 		DemandContractDTO contractDTO  = service.processContractActivity(contractRequest,"N", "P");
@@ -56,7 +60,7 @@ public class DemandContractController {
 		
 	}
 
-	@PostMapping(path = "/settleContract", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping
 	public ResponseEntity<DemandContractResponse>  settleContract(@RequestBody ClientContractRequest contractRequest) throws Exception { 
 		
 		DemandContractDTO contractDTO  = service.processContractActivity(contractRequest,"N", "S");
@@ -86,6 +90,7 @@ public class DemandContractController {
 		activities.forEach(element -> {
 
 			DemandContractActivityResponse activityResponseElement = new DemandContractActivityResponse();
+			
 			activityResponseElement.setContractId(element.getContractId());
 			activityResponseElement.setDemandContractActivityId(element.getDemandContractActivityId());
 			activityResponseElement.setActivityPrice(element.getActivityPrice());

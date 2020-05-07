@@ -21,9 +21,9 @@ public class DemandContractActivityStatusResponse {
 
 	private String activityState;
 
-	private Date activityStateDate;
+	private String activityStateDate;
 
-	private LocalDateTime activityStateTimestamp;
+	private String activityStateTimestamp;
 
 
 }

@@ -26,11 +26,11 @@ public class DemandContractActivityResponse {
 
 	private String activityState;
 
-	private Date activityDate;
+	private String activityDate;
 
-	private LocalDateTime activityCreation;
+	private String activityCreation;
 
-	private LocalDateTime activityUpdation;
+	private String activityUpdation;
 
 	private List<DemandContractActivityStatusResponse> statuses;
 

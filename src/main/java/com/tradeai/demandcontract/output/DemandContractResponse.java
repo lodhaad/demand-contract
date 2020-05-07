@@ -34,9 +34,9 @@ public class DemandContractResponse {
 
 	private Double currentPrice;
 
-	private Date contractBookingDate;
+	private String contractBookingDate;
 
-	 private LocalDate timestamp;
+	 private String timestamp;
 
 	private String contractStatus;
 	
